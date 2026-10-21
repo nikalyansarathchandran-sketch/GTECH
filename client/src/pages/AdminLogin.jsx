@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { supabase } from "../lib/supabaseClient";
 
@@ -13,37 +14,48 @@ function AdminLogin() {
     setError("");
     setLoading(true);
 
-    const { error } = await supabase.auth.signInWithPassword({
-      email,
-      password,
-    });
+    try {
+      const { data, error } = await supabase.auth.signInWithPassword({
+        email,
+        password,
+      });
 
-    if (error) {
-      setError(error.message);
+      if (error) {
+        setError(error.message);
+        setLoading(false);
+        return;
+      }
+
+      if (
+        data.user?.id !== "ebf9fab3-6e53-42e5-be7b-cf95e0fcfc4b"
+      ) {
+        await supabase.auth.signOut();
+        setError(
+          "This account is not authorised to access the admin dashboard."
+        );
+        setLoading(false);
+        return;
+      }
+
+      window.location.href = "/admin";
+    } catch {
+      setError("Something went wrong. Please try again.");
       setLoading(false);
-      return;
     }
-
-    window.location.href = "/admin";
   };
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100 px-4">
       <div className="bg-white p-8 rounded-xl shadow-md w-full max-w-md">
-        <h1 className="text-2xl font-bold mb-2">
-          G-TECH Admin
-        </h1>
+        <h1 className="text-2xl font-bold mb-2">G-TECH Admin</h1>
 
         <p className="text-gray-500 mb-6">
           Login to manage projects and photos.
         </p>
 
         <form onSubmit={handleLogin} className="space-y-4">
-
           <div>
-            <label className="block mb-1 font-medium">
-              Email
-            </label>
+            <label className="block mb-1 font-medium">Email</label>
 
             <input
               type="email"
@@ -56,9 +68,7 @@ function AdminLogin() {
           </div>
 
           <div>
-            <label className="block mb-1 font-medium">
-              Password
-            </label>
+            <label className="block mb-1 font-medium">Password</label>
 
             <input
               type="password"
@@ -71,9 +81,7 @@ function AdminLogin() {
           </div>
 
           {error && (
-            <p className="text-red-600 text-sm">
-              {error}
-            </p>
+            <p className="text-red-600 text-sm">{error}</p>
           )}
 
           <button
@@ -83,7 +91,6 @@ function AdminLogin() {
           >
             {loading ? "Logging in..." : "Login"}
           </button>
-
         </form>
       </div>
     </div>

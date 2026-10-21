@@ -26,23 +26,45 @@ function Admin() {
   const [editMessage, setEditMessage] = useState("");
   const [deletingId, setDeletingId] = useState(null);
 
-  useEffect(() => {
-    async function initialise() {
-      const {
-        data: { user },
-      } = await supabase.auth.getUser();
+  
+useEffect(() => {
+  let active = true;
 
-      setUser(user);
+  async function initialise() {
+    const {
+      data: { user },
+      error,
+    } = await supabase.auth.getUser();
 
-      if (user) {
-        await fetchProjects();
-      } else {
-        setLoadingProjects(false);
+    if (error || !user) {
+      if (active) {
+        window.location.href = "/admin-login";
       }
+      return;
     }
 
-    initialise();
-  }, []);
+    if (user.id !== "ebf9fab3-6e53-42e5-be7b-cf95e0fcfc4b") {
+      await supabase.auth.signOut();
+
+      if (active) {
+        window.location.href = "/admin-login";
+      }
+      return;
+    }
+
+    if (active) {
+      setUser(user);
+      await fetchProjects();
+    }
+  }
+
+  initialise();
+
+  return () => {
+    active = false;
+  };
+}, []);
+
 
   async function fetchProjects() {
     setLoadingProjects(true);
