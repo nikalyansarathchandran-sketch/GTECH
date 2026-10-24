@@ -22,22 +22,22 @@ function Navbar() {
 
   return (
     <header className="sticky top-0 z-50 bg-white shadow-md">
-      <div className="max-w-7xl mx-auto flex items-center justify-between px-4 md:px-8 py-3 md:py-5">
+      <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 md:px-8 md:py-5">
         {/* Logo */}
         <NavLink
           to="/"
-          className="flex items-center shrink-0"
+          className="flex shrink-0 items-center"
           onClick={() => setMenuOpen(false)}
         >
           <img
             src="/gtech-logo.png"
-            alt="G-TECH Engineering Solutions"
-            className="h-20 md:h-32 w-auto object-contain"
+            alt="G-TECH ENGINEERING SERVICES PTE. LTD."
+            className="h-20 w-auto object-contain md:h-32"
           />
         </NavLink>
 
         {/* Desktop navigation */}
-        <nav className="hidden lg:flex items-center gap-8 xl:gap-10">
+        <nav className="hidden items-center gap-8 lg:flex xl:gap-10">
           {navLinks.map((link) => (
             <NavLink
               key={link.name}
@@ -53,7 +53,7 @@ function Navbar() {
         {/* Desktop quote button */}
         <Link
           to="/contact"
-          className="hidden lg:inline-flex bg-blue-900 text-white px-6 py-3 rounded-lg transition hover:bg-orange-500"
+          className="hidden rounded-lg bg-blue-900 px-6 py-3 text-white transition hover:bg-orange-500 lg:inline-flex"
         >
           Get a Quote
         </Link>
@@ -61,8 +61,10 @@ function Navbar() {
         {/* Mobile menu button */}
         <button
           type="button"
-          className="lg:hidden inline-flex items-center justify-center rounded-lg border border-slate-200 p-2 text-slate-800"
-          aria-label={menuOpen ? "Close navigation menu" : "Open navigation menu"}
+          className="inline-flex items-center justify-center rounded-lg border border-slate-200 p-2 text-slate-800 lg:hidden"
+          aria-label={
+            menuOpen ? "Close navigation menu" : "Open navigation menu"
+          }
           aria-expanded={menuOpen}
           onClick={() => setMenuOpen(!menuOpen)}
         >
@@ -101,7 +103,7 @@ function Navbar() {
 
       {/* Mobile navigation */}
       {menuOpen && (
-        <nav className="lg:hidden border-t border-slate-200 bg-white px-5 py-4 space-y-4">
+        <nav className="space-y-4 border-t border-slate-200 bg-white px-5 py-4 lg:hidden">
           {navLinks.map((link) => (
             <NavLink
               key={link.name}
@@ -116,7 +118,7 @@ function Navbar() {
 
           <Link
             to="/contact"
-            className="block text-center bg-blue-900 text-white px-5 py-3 rounded-lg transition hover:bg-orange-500"
+            className="block rounded-lg bg-blue-900 px-5 py-3 text-center text-white transition hover:bg-orange-500"
             onClick={() => setMenuOpen(false)}
           >
             Get a Quote

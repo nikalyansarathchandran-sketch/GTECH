@@ -60,7 +60,7 @@ function About() {
           </h1>
 
           <p className="mt-7 max-w-2xl text-base leading-8 text-slate-300 sm:text-lg">
-            G-TECH Engineering Solutions Pte Ltd supports engineering
+            G-TECH ENGINEERING SERVICES PTE. LTD. supports engineering
             installation, maintenance and project management requirements
             across Singapore, with a focus on quality workmanship and
             dependable service.
@@ -97,7 +97,7 @@ function About() {
 
           <div className="mt-6 space-y-5 text-base leading-8 text-slate-600">
             <p>
-              G-TECH Engineering Solutions Pte Ltd provides engineering
+              G-TECH ENGINEERING SERVICES PTE. LTD. provides engineering
               services focused on installation, maintenance and project
               management. We understand the importance of careful planning,
               clear communication and attention to detail throughout
@@ -142,7 +142,7 @@ function About() {
             </div>
 
             <h3 className="text-2xl font-bold text-white">
-              G-TECH Engineering Solutions
+              G-TECH ENGINEERING SERVICES PTE. LTD.
             </h3>
 
             <p className="mt-3 leading-7 text-slate-300">

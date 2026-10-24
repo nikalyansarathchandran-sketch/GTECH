@@ -1,46 +1,53 @@
+
+import { Link } from "react-router-dom";
+
 function Hero() {
   return (
     <section className="bg-slate-900 text-white">
-      <div className="max-w-7xl mx-auto px-8 py-24 grid md:grid-cols-2 gap-12 items-center">
-
+      <div className="mx-auto grid max-w-7xl items-center gap-12 px-8 py-24 md:grid-cols-2">
         {/* Left Side */}
         <div>
-          <p className="uppercase tracking-widest text-orange-500 font-semibold mb-4">
-            Welcome to G-TECH Engineering
+          <p className="mb-4 font-semibold uppercase tracking-widest text-orange-500">
+            Welcome to G-TECH ENGINEERING SERVICES PTE. LTD.
           </p>
 
-          <h1 className="text-5xl font-bold leading-tight mb-6">
+          <h1 className="mb-6 text-5xl font-bold leading-tight">
             Engineering Solutions
             <br />
             Built on Quality,
             <br />
-            Precision & Trust.
+            Precision &amp; Trust.
           </h1>
 
-          <p className="text-gray-300 text-lg leading-8 mb-10">
+          <p className="mb-10 text-lg leading-8 text-gray-300">
             Delivering professional engineering installation,
             maintenance and project management services across
             Singapore with reliability, safety and excellence.
           </p>
 
-          <div className="flex gap-4">
-            <button className="bg-orange-500 hover:bg-orange-600 transition px-7 py-3 rounded-lg font-semibold">
+          <div className="flex flex-wrap gap-4">
+            <Link
+              to="/services"
+              className="rounded-lg bg-orange-500 px-7 py-3 font-semibold transition hover:bg-orange-600"
+            >
               Our Services
-            </button>
+            </Link>
 
-            <button className="border border-white hover:bg-white hover:text-slate-900 transition px-7 py-3 rounded-lg font-semibold">
+            <Link
+              to="/contact"
+              className="rounded-lg border border-white px-7 py-3 font-semibold transition hover:bg-white hover:text-slate-900"
+            >
               Contact Us
-            </button>
+            </Link>
           </div>
         </div>
 
         {/* Right Side */}
         <div className="flex justify-center">
-          <div className="w-full h-[420px] rounded-xl bg-slate-700 flex items-center justify-center text-gray-300 text-xl">
+          <div className="flex h-[420px] w-full items-center justify-center rounded-xl bg-slate-700 text-xl text-gray-300">
             Hero Image Placeholder
           </div>
         </div>
-
       </div>
     </section>
   );

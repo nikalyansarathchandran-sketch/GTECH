@@ -1,3 +1,6 @@
+
+import { Link } from "react-router-dom";
+
 function WhyChooseUs() {
   const reasons = [
     {
@@ -24,42 +27,42 @@ function WhyChooseUs() {
 
   return (
     <section className="bg-white py-24">
-      <div className="max-w-7xl mx-auto px-8">
-
-        <div className="text-center mb-16">
-
-          <p className="uppercase tracking-widest text-orange-500 font-semibold mb-3">
+      <div className="mx-auto max-w-7xl px-8">
+        <div className="mb-16 text-center">
+          <p className="mb-3 font-semibold uppercase tracking-widest text-orange-500">
             Why Choose Us
           </p>
 
           <h2 className="text-4xl font-bold text-slate-900">
             Trusted by Businesses Across Singapore
           </h2>
-
         </div>
 
-        <div className="grid md:grid-cols-2 gap-8">
-
+        <div className="grid gap-8 md:grid-cols-2">
           {reasons.map((reason) => (
-
             <div
               key={reason.title}
-              className="border rounded-xl p-8 hover:shadow-lg transition duration-300"
+              className="rounded-xl border p-8 transition duration-300 hover:shadow-lg"
             >
-              <h3 className="text-2xl font-semibold mb-4">
+              <h3 className="mb-4 text-2xl font-semibold">
                 {reason.title}
               </h3>
 
-              <p className="text-gray-600 leading-7">
+              <p className="leading-7 text-gray-600">
                 {reason.description}
               </p>
-
             </div>
-
           ))}
-
         </div>
 
+        <div className="mt-12 text-center">
+          <Link
+            to="/contact"
+            className="inline-block rounded-lg bg-blue-900 px-7 py-3 font-semibold text-white transition hover:bg-orange-500"
+          >
+            Contact Us
+          </Link>
+        </div>
       </div>
     </section>
   );

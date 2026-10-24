@@ -1,3 +1,6 @@
+
+import { Link } from "react-router-dom";
+
 function ServicesPreview() {
   const services = [
     {
@@ -19,42 +22,42 @@ function ServicesPreview() {
 
   return (
     <section className="bg-slate-100 py-24">
-      <div className="max-w-7xl mx-auto px-8">
-
-        <div className="text-center mb-16">
-
-          <p className="uppercase tracking-widest text-orange-500 font-semibold mb-3">
+      <div className="mx-auto max-w-7xl px-8">
+        <div className="mb-16 text-center">
+          <p className="mb-3 font-semibold uppercase tracking-widest text-orange-500">
             Our Services
           </p>
 
           <h2 className="text-4xl font-bold text-slate-900">
             Engineering Solutions You Can Trust
           </h2>
-
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8">
-
+        <div className="grid gap-8 md:grid-cols-3">
           {services.map((service) => (
-
             <div
               key={service.title}
-              className="bg-white rounded-xl shadow-md p-8 hover:-translate-y-2 transition duration-300"
+              className="rounded-xl bg-white p-8 shadow-md transition duration-300 hover:-translate-y-2"
             >
-              <h3 className="text-2xl font-semibold mb-4">
+              <h3 className="mb-4 text-2xl font-semibold">
                 {service.title}
               </h3>
 
-              <p className="text-gray-600 leading-7">
+              <p className="leading-7 text-gray-600">
                 {service.description}
               </p>
-
             </div>
-
           ))}
-
         </div>
 
+        <div className="mt-12 text-center">
+          <Link
+            to="/services"
+            className="inline-block rounded-lg bg-blue-900 px-7 py-3 font-semibold text-white transition hover:bg-orange-500"
+          >
+            View All Services
+          </Link>
+        </div>
       </div>
     </section>
   );

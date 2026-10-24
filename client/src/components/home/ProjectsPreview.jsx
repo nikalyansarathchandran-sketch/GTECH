@@ -1,3 +1,6 @@
+
+import { Link } from "react-router-dom";
+
 function ProjectsPreview() {
   const projects = [
     {
@@ -19,51 +22,48 @@ function ProjectsPreview() {
 
   return (
     <section className="bg-slate-100 py-24">
-      <div className="max-w-7xl mx-auto px-8">
-
-        <div className="text-center mb-16">
-
-          <p className="uppercase tracking-widest text-orange-500 font-semibold mb-3">
+      <div className="mx-auto max-w-7xl px-8">
+        <div className="mb-16 text-center">
+          <p className="mb-3 font-semibold uppercase tracking-widest text-orange-500">
             Featured Projects
           </p>
 
           <h2 className="text-4xl font-bold text-slate-900">
             Delivering Results Through Experience
           </h2>
-
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8">
-
+        <div className="grid gap-8 md:grid-cols-3">
           {projects.map((project) => (
-
             <div
               key={project.title}
-              className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition duration-300"
+              className="overflow-hidden rounded-xl bg-white shadow-md transition duration-300 hover:shadow-xl"
             >
-
-              <div className="h-56 bg-slate-300 flex items-center justify-center text-slate-600">
+              <div className="flex h-56 items-center justify-center bg-slate-300 text-slate-600">
                 Project Image
               </div>
 
               <div className="p-6">
-
-                <h3 className="text-2xl font-semibold mb-3">
+                <h3 className="mb-3 text-2xl font-semibold">
                   {project.title}
                 </h3>
 
-                <p className="text-gray-600 leading-7">
+                <p className="leading-7 text-gray-600">
                   {project.description}
                 </p>
-
               </div>
-
             </div>
-
           ))}
-
         </div>
 
+        <div className="mt-12 text-center">
+          <Link
+            to="/projects"
+            className="inline-block rounded-lg bg-blue-900 px-7 py-3 font-semibold text-white transition hover:bg-orange-500"
+          >
+            View All Projects
+          </Link>
+        </div>
       </div>
     </section>
   );

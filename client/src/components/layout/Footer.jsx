@@ -1,17 +1,16 @@
+
 function Footer() {
   return (
-    <footer className="bg-slate-900 text-white mt-20">
-      <div className="max-w-7xl mx-auto px-8 py-12">
-
-        <div className="grid md:grid-cols-3 gap-10">
-
+    <footer className="mt-20 bg-slate-900 text-white">
+      <div className="mx-auto max-w-7xl px-8 py-12">
+        <div className="grid gap-10 md:grid-cols-3">
           {/* Company */}
           <div>
-            <h2 className="text-2xl font-bold mb-4">
-              G-TECH Engineering
+            <h2 className="mb-4 text-2xl font-bold">
+              G-TECH ENGINEERING SERVICES PTE. LTD.
             </h2>
 
-            <p className="text-gray-300 leading-7">
+            <p className="leading-7 text-gray-300">
               Delivering professional engineering installation,
               maintenance and project management solutions across
               Singapore.
@@ -20,7 +19,7 @@ function Footer() {
 
           {/* Services */}
           <div>
-            <h3 className="text-xl font-semibold mb-4">
+            <h3 className="mb-4 text-xl font-semibold">
               Services
             </h3>
 
@@ -33,7 +32,7 @@ function Footer() {
 
           {/* Contact */}
           <div>
-            <h3 className="text-xl font-semibold mb-4">
+            <h3 className="mb-4 text-xl font-semibold">
               Contact
             </h3>
 
@@ -41,11 +40,11 @@ function Footer() {
               📧 chandran@gtechengineering.com
             </p>
 
-            <p className="text-gray-300 mt-2">
+            <p className="mt-2 text-gray-300">
               📞 +65 9860 9641
             </p>
 
-            <p className="text-gray-300 mt-4">
+            <p className="mt-4 text-gray-300">
               #01-04
               <br />
               180 Woodlands Industrial Park E5
@@ -53,16 +52,14 @@ function Footer() {
               Singapore 757512
             </p>
           </div>
-
         </div>
 
         <hr className="my-10 border-slate-700" />
 
         <p className="text-center text-gray-400">
-          © {new Date().getFullYear()} G-TECH Engineering.
+          © {new Date().getFullYear()} G-TECH ENGINEERING SERVICES PTE. LTD.
           All Rights Reserved.
         </p>
-
       </div>
     </footer>
   );
