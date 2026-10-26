@@ -29,18 +29,41 @@ function Contact() {
     setMessage(null);
 
     try {
-      const { error } = await supabase
+      // 1. Save the enquiry to Supabase.
+      const enquiry = {
+        name: form.name.trim(),
+        company: form.company.trim() || null,
+        email: form.email.trim(),
+        phone: form.phone.trim() || null,
+        project_details: form.project_details.trim(),
+      };
+
+      const { error: insertError } = await supabase
         .from("contact_enquiries")
-        .insert({
-          name: form.name.trim(),
-          company: form.company.trim() || null,
-          email: form.email.trim(),
-          phone: form.phone.trim() || null,
-          project_details: form.project_details.trim(),
-        });
+        .insert(enquiry);
 
-      if (error) throw error;
+      if (insertError) {
+        throw insertError;
+      }
 
+      // 2. Trigger the email notification.
+      const { error: emailError } = await supabase.functions.invoke(
+        "notify-enquiry",
+        {
+          body: enquiry,
+        }
+      );
+
+      // 3. Log notification failure separately.
+      // The enquiry has already been saved.
+      if (emailError) {
+        console.error(
+          "Enquiry saved, but notification email failed:",
+          emailError
+        );
+      }
+
+      // 4. Clear the form after the enquiry is saved.
       setForm({
         name: "",
         company: "",
@@ -51,7 +74,9 @@ function Contact() {
 
       setMessage({
         type: "success",
-        text: "Thank you! Your enquiry has been submitted successfully.",
+        text: emailError
+          ? "Your enquiry has been submitted successfully, but we could not confirm the email notification. Please contact us directly if your enquiry is urgent."
+          : "Thank you! Your enquiry has been submitted successfully.",
       });
     } catch (error) {
       console.error("Enquiry submission failed:", error);
@@ -101,10 +126,10 @@ function Contact() {
             <div className="rounded-xl bg-white p-6 shadow-sm">
               <h3 className="font-semibold text-blue-900">Email</h3>
               <a
-                href="mailto:chandran@gtechengineering.com"
+                href="mailto:sales@gtecheng.com.sg"
                 className="mt-2 block break-words text-slate-600 hover:text-orange-500"
               >
-                chandran@gtechengineering.com
+                sales@gtecheng.com.sg
               </a>
             </div>
 
