@@ -44,9 +44,11 @@ function Hero() {
 
         {/* Right Side */}
         <div className="flex justify-center">
-          <div className="flex h-[420px] w-full items-center justify-center rounded-xl bg-slate-700 text-xl text-gray-300">
-            Hero Image Placeholder
-          </div>
+          <img
+    src="/hcl-dosing-cabinet.jpg"
+    alt="HCl dosing cabinet engineering project by G-TECH"
+    className="h-[420px] w-full rounded-xl object-cover shadow-lg"
+  />
         </div>
       </div>
     </section>
