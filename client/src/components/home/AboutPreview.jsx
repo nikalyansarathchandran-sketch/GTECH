@@ -52,9 +52,11 @@ function AboutPreview() {
 
         {/* Right Side */}
         <div className="flex justify-center">
-          <div className="flex h-[450px] w-full items-center justify-center rounded-xl bg-slate-200 text-xl text-slate-500">
-            Company Image Placeholder
-          </div>
+          <img
+    src="/gtech-company-team.jpg"
+    alt="G-TECH team handling engineering equipment"
+    className="h-[450px] w-full rounded-xl object-cover shadow-lg"
+  />
         </div>
       </div>
     </section>
